@@ -9,16 +9,24 @@
 /* Begin PBXBuildFile section */
 		4846862C2846335900F0E3C5 /* CryptBroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846862B2846335900F0E3C5 /* CryptBroApp.swift */; };
 		4846862E2846335900F0E3C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846862D2846335900F0E3C5 /* ContentView.swift */; };
-		484686302846335C00F0E3C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4846862F2846335C00F0E3C5 /* Assets.xcassets */; };
 		484686332846335C00F0E3C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 484686322846335C00F0E3C5 /* Preview Assets.xcassets */; };
+		4846863A284633E400F0E3C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48468639284633E400F0E3C5 /* Assets.xcassets */; };
+		4846863D2846366700F0E3C5 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846863C2846366700F0E3C5 /* Color+Extension.swift */; };
+		48468645284639AE00F0E3C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48468644284639AE00F0E3C5 /* HomeView.swift */; };
+		4846864928463AE000F0E3C5 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846864828463AE000F0E3C5 /* CircleButtonView.swift */; };
+		489D7E0228471A2C0080C36E /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D7E0128471A2C0080C36E /* CircleButtonAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		484686282846335900F0E3C5 /* CryptBro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptBro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		484686282846335900F0E3C5 /* Crypt Bro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypt Bro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4846862B2846335900F0E3C5 /* CryptBroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptBroApp.swift; sourceTree = "<group>"; };
 		4846862D2846335900F0E3C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4846862F2846335C00F0E3C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		484686322846335C00F0E3C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		48468639284633E400F0E3C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4846863C2846366700F0E3C5 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		48468644284639AE00F0E3C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4846864828463AE000F0E3C5 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
+		489D7E0128471A2C0080C36E /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +51,7 @@
 		484686292846335900F0E3C5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				484686282846335900F0E3C5 /* CryptBro.app */,
+				484686282846335900F0E3C5 /* Crypt Bro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,9 +59,13 @@
 		4846862A2846335900F0E3C5 /* CryptBro */ = {
 			isa = PBXGroup;
 			children = (
+				4846863F2846392A00F0E3C5 /* ViewModel */,
+				484686402846393200F0E3C5 /* View */,
+				4846863B2846365000F0E3C5 /* Extension */,
+				4846863E2846392400F0E3C5 /* Core */,
 				4846862B2846335900F0E3C5 /* CryptBroApp.swift */,
 				4846862D2846335900F0E3C5 /* ContentView.swift */,
-				4846862F2846335C00F0E3C5 /* Assets.xcassets */,
+				48468639284633E400F0E3C5 /* Assets.xcassets */,
 				484686312846335C00F0E3C5 /* Preview Content */,
 			);
 			path = CryptBro;
@@ -65,6 +77,78 @@
 				484686322846335C00F0E3C5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4846863B2846365000F0E3C5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4846863C2846366700F0E3C5 /* Color+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4846863E2846392400F0E3C5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4846864628463AA800F0E3C5 /* Components */,
+				484686412846398600F0E3C5 /* Home */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4846863F2846392A00F0E3C5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		484686402846393200F0E3C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		484686412846398600F0E3C5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				484686432846399900F0E3C5 /* ViewModels */,
+				484686422846399200F0E3C5 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		484686422846399200F0E3C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48468644284639AE00F0E3C5 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		484686432846399900F0E3C5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4846864628463AA800F0E3C5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4846864728463AC500F0E3C5 /* CircleButton */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4846864728463AC500F0E3C5 /* CircleButton */ = {
+			isa = PBXGroup;
+			children = (
+				4846864828463AE000F0E3C5 /* CircleButtonView.swift */,
+				489D7E0128471A2C0080C36E /* CircleButtonAnimationView.swift */,
+			);
+			path = CircleButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,7 +168,7 @@
 			);
 			name = CryptBro;
 			productName = CryptBro;
-			productReference = 484686282846335900F0E3C5 /* CryptBro.app */;
+			productReference = 484686282846335900F0E3C5 /* Crypt Bro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,8 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4846863A284633E400F0E3C5 /* Assets.xcassets in Resources */,
 				484686332846335C00F0E3C5 /* Preview Assets.xcassets in Resources */,
-				484686302846335C00F0E3C5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +222,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4846862E2846335900F0E3C5 /* ContentView.swift in Sources */,
+				48468645284639AE00F0E3C5 /* HomeView.swift in Sources */,
+				4846863D2846366700F0E3C5 /* Color+Extension.swift in Sources */,
+				4846864928463AE000F0E3C5 /* CircleButtonView.swift in Sources */,
 				4846862C2846335900F0E3C5 /* CryptBroApp.swift in Sources */,
+				489D7E0228471A2C0080C36E /* CircleButtonAnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +361,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -281,7 +370,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karma.CryptBro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Crypt Bro";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -302,7 +391,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -310,7 +400,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karma.CryptBro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Crypt Bro";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
