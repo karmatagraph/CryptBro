@@ -19,6 +19,7 @@
 		489D7E072847281D0080C36E /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D7E062847281D0080C36E /* CoinRowView.swift */; };
 		489D7E092847287F0080C36E /* PreviewProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D7E082847287F0080C36E /* PreviewProvider+Extension.swift */; };
 		489D7E0B28472D070080C36E /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D7E0A28472D070080C36E /* Double+Extension.swift */; };
+		48AF2BB528474B9F00F5F44D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AF2BB428474B9F00F5F44D /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		489D7E062847281D0080C36E /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		489D7E082847287F0080C36E /* PreviewProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Extension.swift"; sourceTree = "<group>"; };
 		489D7E0A28472D070080C36E /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		48AF2BB428474B9F00F5F44D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		484686432846399900F0E3C5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				48AF2BB428474B9F00F5F44D /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				489D7E072847281D0080C36E /* CoinRowView.swift in Sources */,
+				48AF2BB528474B9F00F5F44D /* HomeViewModel.swift in Sources */,
 				4846862E2846335900F0E3C5 /* ContentView.swift in Sources */,
 				48468645284639AE00F0E3C5 /* HomeView.swift in Sources */,
 				4846863D2846366700F0E3C5 /* Color+Extension.swift in Sources */,
