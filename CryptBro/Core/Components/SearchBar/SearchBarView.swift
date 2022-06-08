@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchBarView: View {
+    
     @Binding var searchText: String
     var body: some View {
         HStack {
@@ -39,11 +40,10 @@ struct SearchBarView: View {
                         radius: 10,
                         x: 0,
                         y: 0)
-            
         )
         .padding()
-        
     }
+    
 }
 
 struct SearchBarView_Previews: PreviewProvider {
