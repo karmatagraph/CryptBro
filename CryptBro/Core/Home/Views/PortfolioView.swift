@@ -34,6 +34,11 @@ struct PortfolioView: View {
                    trailingNavBarButton
                 }
             }
+            .onChange(of: vm.searchText) { newValue in
+                if newValue == "" {
+                    removeSelectedCoin()
+                }
+            }
         }
     }
 
@@ -52,13 +57,14 @@ extension PortfolioView {
     private var coinLogoList: some View {
         ScrollView(.horizontal,showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(vm.allCoins) { coin in
+                ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(4)
                         .onTapGesture {
                             withAnimation(.easeIn) {
                                 selectedCoin = coin
+                                updateSelectedCoin(coin: coin)
                             }
                         }
                         .background(
@@ -69,6 +75,16 @@ extension PortfolioView {
             }
             .padding(2)
             .padding(.leading)
+        }
+    }
+    
+    private func updateSelectedCoin(coin: CoinModel) {
+        selectedCoin = coin
+        if let portfolioCoins = vm.portfolioCoins.first(where: { $0.id == coin.id }),
+           let amount = portfolioCoins.currentHoldings {
+            quantityText = amount.asNumberString()
+        } else {
+            quantityText = ""
         }
     }
     
@@ -111,6 +127,7 @@ extension PortfolioView {
         HStack(spacing: 10) {
             Image(systemName: "checkmark")
                 .opacity(checkMark ? 1.0 : 0.0)
+                .foregroundColor(.theme.green)
             Button {
                 saveButtonPressed()
             } label: {
@@ -126,8 +143,12 @@ extension PortfolioView {
     }
     
     private func saveButtonPressed() {
-        guard let coins = selectedCoin else { return }
+        guard
+            let coins = selectedCoin,
+            let amount = Double(quantityText)
+        else { return }
         // save to portfolio
+        vm.updatePortfolio(coin: coins, amount: amount )
         
         // show the checkmark
         withAnimation(.easeIn) {
