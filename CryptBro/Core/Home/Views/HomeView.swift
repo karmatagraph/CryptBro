@@ -9,7 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     
+    // To animate to right
     @State private var showPortfolio: Bool = false
+    // To show the sheet for adding to portfolio
+    @State private var showPortfolioView: Bool = false
     @EnvironmentObject private var vm: HomeViewModel
     
     
@@ -17,6 +20,10 @@ struct HomeView: View {
         ZStack {
             Color.theme.background
                 .ignoresSafeArea()
+                .sheet(isPresented: $showPortfolioView) {
+                    PortfolioView()
+                        .environmentObject(vm)
+                }
             VStack {
                 homeHeaderView
                 //home stat view
@@ -54,6 +61,11 @@ extension HomeView {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info" )
                 .animation(.none)
+                .onTapGesture {
+                    if showPortfolio {
+                        showPortfolioView.toggle()
+                    }
+                }
                 .background(CircleButtonAnimationView(animate: $showPortfolio))
             Spacer()
             Text("Live Prices")
