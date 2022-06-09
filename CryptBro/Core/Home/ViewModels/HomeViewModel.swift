@@ -35,13 +35,6 @@ class HomeViewModel: ObservableObject {
     }
     
     func addSubscriber() {
-//        dataService.$allCoins
-//            .sink { [weak self] returnedCoins in
-//                self?.allCoins = returnedCoins
-//            }
-//            .store(in: &cancellables)
-        
-        
         // Updates all coins
         $searchText
             .combineLatest(coinDataService.$allCoins)
@@ -52,8 +45,18 @@ class HomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        // Updates the portfolio coins
+        $allCoins
+            .combineLatest(portfolioDataService.$savedEntities)
+            .map(mapAllCoinstoPortfolio)
+            .sink { [weak self] returnedCoins in
+                self?.portfolioCoins = returnedCoins
+            }
+            .store(in: &cancellables)
+        
         // Listen for Market Data and updates it
         marketDataService.$marketData
+            .combineLatest($portfolioCoins)
             .map(mapGlobalMarketData)
             .sink { [weak self] returnedStat in
                 guard let self = self else { return }
@@ -61,23 +64,17 @@ class HomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        // Updates the portfolio coins
-        $allCoins
-            .combineLatest(portfolioDataService.$savedEntities)
-            .map { coinModels, portfolioEntities -> [CoinModel] in
-                coinModels.compactMap { currentCoin -> CoinModel? in
-                    guard let entity = portfolioEntities.first(where: { $0.coinID == currentCoin.id }) else { return nil}
-                    return currentCoin.updateHoldings(amount: entity.amount)
-                }
-            }
-            .sink { [weak self] returnedCoins in
-                self?.portfolioCoins = returnedCoins
-            }
-            .store(in: &cancellables)
     }
     
     func updatePortfolio(coin: CoinModel, amount: Double) {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
+    }
+    
+    private func mapAllCoinstoPortfolio(coinModels: [CoinModel], portfolioEntities: [PortfolioEntity]) -> [CoinModel] {
+        coinModels.compactMap { currentCoin -> CoinModel? in
+            guard let entity = portfolioEntities.first(where: { $0.coinID == currentCoin.id }) else { return nil}
+            return currentCoin.updateHoldings(amount: entity.amount)
+        }
     }
     
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel]{
@@ -93,13 +90,31 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    private func mapGlobalMarketData(data: MarketDataModel?) -> [StatisticModel] {
+    private func mapGlobalMarketData(data: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
         var stats: [StatisticModel] = []
         guard let data = data else { return stats}
+        
         let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap,percentageChange: data.marketCapChangePercentage24HUsd)
         let volume = StatisticModel(title: "24H Volume", value: data.volume)
         let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcDominace)
-        let portfolio = StatisticModel(title: "Portfolio Value", value: "$0.00", percentageChange: 0.0)
+        let portfolioValue =
+        portfolioCoins
+            .map({$0.currentHoldingsValue})
+            .reduce(0,+)
+        let previousValue = portfolioCoins
+            .map { coin -> Double in
+                let currentValue = coin.currentHoldingsValue
+                let percentChange = (coin.priceChangePercentage24H) / 100
+                let previousValue = currentValue / (1 + percentChange)
+                return previousValue
+            }
+            .reduce(0, +)
+        let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
+        
+        let portfolio = StatisticModel(
+            title: "Portfolio Value",
+            value: portfolioValue.asCurrencyWith2Decimals(),
+            percentageChange: percentageChange)
         stats.append(contentsOf:[
             marketCap,
             volume,

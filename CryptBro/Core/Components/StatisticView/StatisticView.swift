@@ -27,8 +27,8 @@ struct StatisticView: View {
                 Text(stat.percentageChange?.asPercentString() ?? "")
                     .font(.caption)
                     .bold()
-                    .opacity(stat.percentageChange == nil ? 0.0 : 1.0)
             }
+            .opacity(stat.percentageChange == nil ? 0.0: 1.0)
         }
     }
 }
