@@ -19,12 +19,13 @@ class CoinDataService {
         getCoins()
     }
     
-    private func getCoins() {
+    func getCoins() {
         coinSubscription = NetworkingManager.download(url: Endpoints.market.url)
             .decode(type: [CoinModel].self, decoder: JSONDecoder())
             .sink(receiveCompletion:NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedCoins in
                 self?.allCoins = returnedCoins
                 self?.coinSubscription?.cancel()
+                print("---------------API CALLED-------------------")
             })
     }
     

@@ -34,6 +34,12 @@ class HomeViewModel: ObservableObject {
         addSubscriber()
     }
     
+    func refreshCall() {
+        coinDataService.getCoins()
+        marketDataService.getData()
+        HapticManager.notification(type: .success)
+    }
+    
     func addSubscriber() {
         // Updates all coins
         $searchText

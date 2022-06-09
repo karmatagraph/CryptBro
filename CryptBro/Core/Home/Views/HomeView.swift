@@ -94,6 +94,9 @@ extension HomeView {
             }
         }
         .listStyle(.plain)
+        .refreshable {
+            vm.refreshCall()
+        }
     }
     
     private var portfolioCoinsList: some View {
@@ -115,6 +118,12 @@ extension HomeView {
             }
             Text("Price")
                 .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
+//            Button {
+//                vm.refreshCall()
+//            } label: {
+//                Image(systemName: "goforward")
+//            }
+
         }
         .font(.caption)
         .foregroundColor(Color.theme.secondaryText)
