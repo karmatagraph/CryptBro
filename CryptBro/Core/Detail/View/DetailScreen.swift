@@ -36,9 +36,11 @@ struct DetailScreen: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Text("about")
-                    .frame(height: 150)
+                ChartView(coin: vm.coin)
+                    .frame(height: 200)
+                    .padding(.top, 10)
                 overviewTitle
+                    
                 Divider()
                 overviewGrid
                 additionalTitle
@@ -48,6 +50,12 @@ struct DetailScreen: View {
             .padding()
         }
         .navigationTitle(vm.coin.name)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+//                CoinImageView(coin: vm.coin)
+                navbarTrailingItems
+            }
+        }
     }
 }
 
@@ -66,6 +74,7 @@ extension DetailScreen {
             .bold()
             .foregroundColor(.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(10)
     }
     
     private var additionalTitle: some View {
@@ -74,6 +83,7 @@ extension DetailScreen {
             .bold()
             .foregroundColor(.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(10)
     }
     
     private var overviewGrid: some View {
@@ -87,6 +97,9 @@ extension DetailScreen {
                     StatisticView(stat: stat)
                 }     
             })
+        .padding()
+        .background(.thinMaterial)
+        .cornerRadius(10)
     }
     
     private var additionalGrid: some View {
@@ -100,6 +113,19 @@ extension DetailScreen {
                     StatisticView(stat: stat)
                 }
             })
+        .padding()
+        .background(.thinMaterial)
+        .cornerRadius(10)
+    }
+    
+    private var navbarTrailingItems: some View {
+        HStack {
+            Text(vm.coin.symbol.uppercased())
+                .font(.headline)
+            .foregroundColor(.theme.secondaryText)
+            CoinImageView(coin: vm.coin)
+                .frame(width: 25, height: 25)
+        }
     }
     
 }
