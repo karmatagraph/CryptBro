@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DetailLoadingView: View {
+    
+    
     @Binding var coin: CoinModel?
     var body: some View {
         ZStack {
@@ -20,14 +22,14 @@ struct DetailLoadingView: View {
 }
 
 struct DetailScreen: View {
-    let coin: CoinModel
+    @StateObject private var vm: DetailViewModel
     
     init(coin: CoinModel) {
-        self.coin = coin
+        self._vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
         print("initing for detail view for \(coin.name)")
     }
     var body: some View {
-        Text(coin.name)
+        Text("hello")
     }
 }
 
