@@ -23,6 +23,7 @@ struct DetailLoadingView: View {
 
 struct DetailScreen: View {
     @StateObject private var vm: DetailViewModel
+    @State private var showDescription: Bool = false
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -40,12 +41,13 @@ struct DetailScreen: View {
                     .frame(height: 200)
                     .padding(.top, 10)
                 overviewTitle
-                    
                 Divider()
+                coinDescription
                 overviewGrid
                 additionalTitle
                 Divider()
                 additionalGrid
+                websiteSection
             }
             .padding()
         }
@@ -127,5 +129,52 @@ extension DetailScreen {
                 .frame(width: 25, height: 25)
         }
     }
+    
+    private var coinDescription: some View {
+        ZStack {
+            if let coinDescription = vm.coinDescription, !coinDescription.isEmpty {
+                VStack(alignment: .leading) {
+                    Text(coinDescription)
+                        .lineLimit(showDescription ? nil : 3)
+                        .font(.callout)
+                        .foregroundColor(.theme.secondaryText)
+                    Button {
+                        withAnimation(.easeIn) {
+                            showDescription.toggle()
+                        }
+                    } label: {
+                        Text(showDescription ? "Less" :"Read More...")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .padding(.vertical, 4)
+                    }
+                    .tint(.blue)
+                    
+
+                }
+                
+            }
+        }
+        .padding()
+        .background(.thinMaterial)
+        .cornerRadius(10)
+    }
+    
+    private var websiteSection: some View {
+        VStack(alignment: .leading, spacing: 10){
+            if let websiteString = vm.websiteUrl,
+               let url = URL(string: websiteString){
+                Link("Website",destination: url)
+            }
+            if let redditString = vm.redditUrl,
+               let url = URL(string: redditString) {
+                Link("Reddit", destination: url)
+            }
+        }
+        .font(.headline)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .tint(.blue)
+    }
+        
     
 }
