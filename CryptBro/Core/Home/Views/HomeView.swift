@@ -14,6 +14,8 @@ struct HomeView: View {
     // To show the sheet for adding to portfolio
     @State private var showPortfolioView: Bool = false
     @EnvironmentObject private var vm: HomeViewModel
+    @State private var selectedCoin: CoinModel? = nil
+    @State private var showDetailView: Bool = false
     
     
     var body: some View {
@@ -43,6 +45,14 @@ struct HomeView: View {
                 Spacer()
             }
         }
+        .background(
+            NavigationLink(
+                destination: DetailLoadingView(coin: $selectedCoin),
+                isActive: $showDetailView,
+                label: {
+                EmptyView()
+            })
+        )
     }
 }
 
@@ -92,6 +102,9 @@ extension HomeView {
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingColumn: false)
                     .listRowInsets(.init(top: 15, leading: 0, bottom: 15, trailing: 10))
+                    .onTapGesture {
+                        segwey(coin: coin)
+                    }
             }
         }
         .listStyle(.plain)
@@ -100,11 +113,19 @@ extension HomeView {
         }
     }
     
+    private func segwey(coin: CoinModel) {
+        selectedCoin = coin
+        showDetailView.toggle()
+    }
+    
     private var portfolioCoinsList: some View {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingColumn: true)
                     .listRowInsets(.init(top: 15, leading: 0, bottom: 15, trailing: 10))
+                    .onTapGesture {
+                        segwey(coin: coin)
+                    }
             }
         }
         .listStyle(.plain)
