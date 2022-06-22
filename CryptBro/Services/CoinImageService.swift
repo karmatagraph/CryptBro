@@ -41,6 +41,7 @@ class CoinImageService {
             .tryMap({ data -> UIImage? in
                 return UIImage(data: data)
             })
+            .receive(on: DispatchQueue.main)
         //            .decode(type: [CoinModel].self, decoder: JSONDecoder())
             .sink(receiveCompletion:NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedImages in
                 guard

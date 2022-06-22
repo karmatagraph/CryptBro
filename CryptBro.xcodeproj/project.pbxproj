@@ -44,9 +44,12 @@
 		489D7E072847281D0080C36E /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D7E062847281D0080C36E /* CoinRowView.swift */; };
 		489D7E092847287F0080C36E /* PreviewProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D7E082847287F0080C36E /* PreviewProvider+Extension.swift */; };
 		489D7E0B28472D070080C36E /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489D7E0A28472D070080C36E /* Double+Extension.swift */; };
+		48A5225928583C25009E88AE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A5225828583C25009E88AE /* SettingsView.swift */; };
 		48AF2BB528474B9F00F5F44D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AF2BB428474B9F00F5F44D /* HomeViewModel.swift */; };
 		48B68F712848693200D4FF22 /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B68F702848693200D4FF22 /* CoinDataService.swift */; };
 		48B68F7428486A0100D4FF22 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B68F7328486A0100D4FF22 /* Endpoints.swift */; };
+		48FA7F3E2862F8B100E4F91F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FA7F3D2862F8B100E4F91F /* LaunchScreen.storyboard */; };
+		48FA7F422862FA8500E4F91F /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA7F412862FA8500E4F91F /* LaunchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,9 +91,12 @@
 		489D7E062847281D0080C36E /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		489D7E082847287F0080C36E /* PreviewProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Extension.swift"; sourceTree = "<group>"; };
 		489D7E0A28472D070080C36E /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		48A5225828583C25009E88AE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		48AF2BB428474B9F00F5F44D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		48B68F702848693200D4FF22 /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		48B68F7328486A0100D4FF22 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		48FA7F3D2862F8B100E4F91F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		48FA7F412862FA8500E4F91F /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +169,9 @@
 			children = (
 				489624272853085800AA51B8 /* Detail */,
 				4846864628463AA800F0E3C5 /* Components */,
+				48FA7F3B2862F89900E4F91F /* Launch */,
 				484686412846398600F0E3C5 /* Home */,
+				48A5225628583BFA009E88AE /* Settings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -291,6 +299,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		48A5225628583BFA009E88AE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				48A5225728583C0B009E88AE /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		48A5225728583C0B009E88AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48A5225828583C25009E88AE /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		48B68F6F284868E800D4FF22 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +333,23 @@
 				48B68F7328486A0100D4FF22 /* Endpoints.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		48FA7F3B2862F89900E4F91F /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				48FA7F3C2862F8A100E4F91F /* Views */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		48FA7F3C2862F8A100E4F91F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48FA7F3D2862F8B100E4F91F /* LaunchScreen.storyboard */,
+				48FA7F412862FA8500E4F91F /* LaunchView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +410,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48FA7F3E2862F8B100E4F91F /* LaunchScreen.storyboard in Resources */,
 				4846863A284633E400F0E3C5 /* Assets.xcassets in Resources */,
 				484686332846335C00F0E3C5 /* Preview Assets.xcassets in Resources */,
 			);
@@ -382,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48B68F712848693200D4FF22 /* CoinDataService.swift in Sources */,
+				48FA7F422862FA8500E4F91F /* LaunchView.swift in Sources */,
 				487AB7C6285096BA00C4A86B /* StatisticModel.swift in Sources */,
 				489D7E072847281D0080C36E /* CoinRowView.swift in Sources */,
 				48B68F7428486A0100D4FF22 /* Endpoints.swift in Sources */,
@@ -393,6 +436,7 @@
 				4863720F2851A5D100C4302E /* MarketDataModel.swift in Sources */,
 				4863721C2851DBBA00C4302E /* PortfolioDataService.swift in Sources */,
 				4846863D2846366700F0E3C5 /* Color+Extension.swift in Sources */,
+				48A5225928583C25009E88AE /* SettingsView.swift in Sources */,
 				489D7E092847287F0080C36E /* PreviewProvider+Extension.swift in Sources */,
 				487AB7C92850985C00C4A86B /* StatisticView.swift in Sources */,
 				487AB7BD28505B1800C4A86B /* CoinImageViewModel.swift in Sources */,
@@ -553,6 +597,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -583,6 +628,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

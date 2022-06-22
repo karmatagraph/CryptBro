@@ -25,6 +25,7 @@ struct PortfolioView: View {
                     }
                 }
             }
+            .background(Color.theme.background.ignoresSafeArea())
             .navigationTitle("Portfolio")
             .toolbar() {
                 ToolbarItem(placement: .navigationBarLeading){

@@ -16,6 +16,7 @@ struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State private var selectedCoin: CoinModel? = nil
     @State private var showDetailView: Bool = false
+    @State private var showSettings: Bool = false
     
     
     var body: some View {
@@ -39,10 +40,20 @@ struct HomeView: View {
                         .transition(.move(edge: .leading))
                 }
                 if showPortfolio {
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
+                    ZStack(alignment: .top) {
+                        if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                            portfolioEmptyText
+                        } else {
+                            portfolioCoinsList
+                                .transition(.move(edge: .trailing))
+                        }
+                    }
+                    .transition(.move(edge: .trailing))
                 }
                 Spacer()
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
             }
         }
         .background(
@@ -75,6 +86,8 @@ extension HomeView {
                 .onTapGesture {
                     if showPortfolio {
                         showPortfolioView.toggle()
+                    } else {
+                        showSettings.toggle()
                     }
                 }
                 .background(CircleButtonAnimationView(animate: $showPortfolio))
@@ -105,6 +118,7 @@ extension HomeView {
                     .onTapGesture {
                         segwey(coin: coin)
                     }
+                    .listRowBackground(Color.theme.background)
             }
         }
         .listStyle(.plain)
@@ -126,9 +140,19 @@ extension HomeView {
                     .onTapGesture {
                         segwey(coin: coin)
                     }
+                    .listRowBackground(Color.theme.background)
             }
         }
         .listStyle(.plain)
+    }
+    
+    private var portfolioEmptyText: some View {
+        Text("You havent added any coins to your portfolio yet. click on the plus button to add to portfolio")
+            .font(.callout)
+            .foregroundColor(.theme.accent)
+            .fontWeight(.medium)
+            .multilineTextAlignment(.center)
+            .padding(50)
     }
     
     private var columnTitles: some View {
